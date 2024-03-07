@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let i, reuslt;
+    reuslt = 0;
+    
+    for(i = 1; i <= 10; i++){
+        reuslt += i;
+    }
+    console.log(reuslt);
+
+    i = 1;
+    reuslt = 0;
+    while(i <= 10){
+        reuslt += i;
+        i++;
+    }
+    console.log(reuslt);
+
+    let plave = ["남예준", "한노아", "채밤비", "도은호", "유하민"];
+
+    for(i = 0; i < 5; i++){
+        console.log(plave[i])
+    }
+    console.log(plave)
+
+    for(i in plave)
+        console.log(plave[i])
+    // of 연산자 > 배열에 있는 item을 하나씩 꺼내다준다.
+    for(item of plave)
+        console.log(item)
+    //람다 forEach > 함수를 포gkarksmdgkek
+    /*
+        개발자가 함수를 만들면 이를 호출해주는 시스템이다
+        forEach구문에 전달해야 할 함수는 두개의 매개변수 배열의 요소, 인덱스가
+        있어야 하며 반환값은 없는 함수를 전달해줘야 한다.
+        함수형 언어의 기본이다.
+        자ㅏ바 > 람다, 스트림 / 파이썬 > 람다 /
+    */
+    plave.forEach((item) => {
+        console.log(item)
+    })
+</script>

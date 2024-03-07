@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!--
+        파일은 post로만 전달 가능 multipart/form-data 옵션이 포함되어야한다.
+        파일 업로드는 물리적 경로가 필요하며 20~30M를 넘지 않는 것이 좋다.
+        보통 파일은 body로 정보가 보내짐. 그러나 파일 처리 방법이 어려워 보통은
+        라이브러리를 사용해 전달한다.
+        각 프레임 워크에서 자주 사용하는 라이브러리가 다르며 사용법도 상이하다.
+        현재는 multer라는 라이브러리가 많이 사용된다.
+    -->
+    <form name = "myform" id = "myform" action="/filesave3" method="post" enctype="multipart/form-data">
+        comment : <input type="text" name="comment" id="comment">
+        <br/>file : <input type="file" name="file" id="file">
+        <br/>file : <input type="file" name="file" id="file">
+        <br/>file : <input type="file" name="file" id="file">
+
+        <button name = "mybtn" id = "mybtn" type="button">전송</button>
+    </form>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        document.querySelector("#mybtn").addEventListener("click", async ()=>{
+            let formData = new FormData(document.getElementById("myform"))
+            /*//console.log(formData)
+            axios({
+                url:"/filesave2",
+                method:"POST",
+                data:formData,
+                headers:{"Content-Type":"multpart/form-data"}
+            })
+            .then((res) =>{
+                alert(res.data.result)
+            }).catch((err)=>{
+                alert(err)
+            })*/
+            const {data} = await axios({
+                url:"/filesave2",
+                method:"POST",
+                data:formData,
+                headers:{"Content-Type":"multpart/form-data"}
+            })
+            console.log(data);
+            alert(data);
+        })
+    }
+    
+</script>

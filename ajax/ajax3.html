@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Ajax html</h1>
+    <div id = "result" style="border: 1px solid red; width: 400px; height: 100px;"></div>
+    <input type="text" name="xval" id="xval">
+    <input type="text" name="yval" id="yval">
+    <button type="button" id = "btnSend">시작</button>
+</body>
+</html>
+<script>
+    //fetch 함수가주는 결과는 promise 객체이다.
+    //promise가 일을 종료할 때까지 기다린다. then 구문
+    document.querySelector("#btnSend").addEventListener('click', ()=>{
+      $.ajax({
+        url : "http://localhost:8080/add",
+        method : "POST",
+        data:{x : $("#xval").val(), y: $("#yval").val()}
+
+      }).done((res)=>{
+        console.log(res.result)
+        $("#result").text(res.result);
+      })
+      .fail((res,msg,status)=>{
+        console.log(msg);
+      });
+    });
+</script>

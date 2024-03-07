@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1></h1>
+
+    <div id = "counter"></div>
+</body>
+</html>
+<script type = "text/babel">
+    function Counter(){
+        const [num, setNum] = React.useState(0)
+        let increase = ()=>{
+            setNum(num + 1)
+        };
+        let decrease = ()=>{
+            setNum(num - 1)
+        }
+        return(
+            <div>
+                <p>{num}</p>
+                <button type="button" onClick={increase}>증가</button>
+                <button type="button" onClick={decrease}>감소</button>
+            </div>
+        )
+    }
+
+    function InputCompoment(){
+        const [str1, setStr1] = React.useState("")
+        const [str2, setStr2] = React.useState("")
+        const valueChange = (event)=>{
+            //let text = event.target.value;
+            //setStr(text)
+
+            if(event.target.id == "str1"){
+                setStr1(event.target.value)
+            }else{
+                setStr2(event.target.value)
+            }
+        }
+        return(
+            <div>
+                <input type="text" name="str1" id="str1" value = {str1} onChange={valueChange}/>
+                <input type="text" name="str2" id="str2" value = {str2} onChange={valueChange}/>
+            </div>
+        )
+    }
+
+    ReactDOM.render(
+            <div>
+                <Counter/>  
+                <InputCompoment/>  
+            </div>
+        ,
+            document.getElementById("counter")
+        );
+</script>

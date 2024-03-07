@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <table id = "table" style="width: 80%; text-align: center;">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>시간</th>
+                <th>시간당 급여액</th>
+                <th>주급</th>
+            </tr>
+        </thead>
+        <tbody id = "tbody">
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    
+    let data = [
+        {"name": "홍길동", "time": 40, "pertime": 15000},
+        {"name": "이순신", "time": 35, "pertime": 17000},
+        { "name": "김철수", "time": 42, "pertime": 16000 },
+        {"name": "박영희", "time":  19, "pertime": 18000 },
+        {"name": "최영자", "time": 37, "pertime": 17500}
+    ]
+
+    $(document).ready(()=>{
+        data.forEach((item) => {
+            const dollor1 = item.pertime.toLocaleString();
+            let money = item.pertime * item.time
+            if(item.time > 20){   
+                money += item.pertime * (item.time - 20) * 0.5
+            }
+            const dollor2 = money.toLocaleString();
+            let text = "<tr><td>"+ item.name +"</td><td>"+  item.time +"</td><td>"+  dollor1 +"</td><td>"+  dollor2 +"</td></tr>"
+            $("#table>tbody").append(text)
+        })
+        
+    })
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id = "root">
+
+    </div>
+</body>
+</html>
+<script type="text/babel">
+    function App(){
+        const [userinfo, setUserinfo] = React.useState(
+            {name : "yejun", phone : "010-1341-1341", email : "namyejun@gmail.com"}
+        )
+        const [userinfoList, setuserinfoList] = React.useState([]);
+
+        const {name, phone, email} = userinfo; //모던스크립트의 해체
+        /*
+            name = userinfo.name;
+            phone = userinfo.phone;
+            email = userinfo.email;
+        */
+       const nameChange = (e)=>{ setUserinfo({...userinfo, name:e.target.value})}
+       const phoneChange = (e)=>{ setUserinfo({...userinfo, phone:e.target.value})}
+       const emailChange = (e)=>{ setUserinfo({...userinfo, email:e.target.value})}
+       
+       const append = ()=>{
+            setuserinfoList(userinfoList.concat(userinfo))
+            setUserinfo({name:"",phone:"",email:""})
+        }
+        return(
+            <div>
+                <input type="text" onChange = {nameChange} value = {name}/><br/>
+                <input type="text" onChange = {phoneChange} value = {phone}/><br/>
+                <input type="text" onChange = {emailChange} value = {email}/><br/>
+                <button type="button" onClick = {append}>추사</button>
+                <table>
+                    {
+                        userinfoList.map((item,key)=>{
+                            return(
+                                <tr id = {key}>
+                                    <td>{item.name}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.email}</td>
+                                </tr>
+                            )
+                        })
+                    }
+                </table>
+            </div>
+        )
+    }
+    ReactDOM.render(
+        <App/> ,
+        document.getElementById("root")
+    )
+</script>

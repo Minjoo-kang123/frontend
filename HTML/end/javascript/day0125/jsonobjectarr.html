@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //_는 되지만 -눈 사용 불가
+    let persons = [
+        {"name":"홍길동", "age":23},
+        {"name":"임꺽정", "age":24},
+        {"name":"강조",   "age":25},
+        {"name":"장길산", "age":33},
+        {"name":"홍경래", "age":43},
+        {"name":"이징옥", "age":83}
+    ];
+    console.log(persons[0].name);
+    console.log(persons[0]["name"])
+    
+   for(i in persons){
+    console.log(persons[i].name);
+   }
+   persons.forEach(person => console.log(person.name)); //가장 잘 쓰는 형태
+
+   //이름으로 검색하려함
+
+   let name = "뚝스"
+   let search = persons.find(item => {
+        return item.name == name;
+   });
+   if(search == undefined){
+    console.log(`${name}은 없습니다.`)}
+   else{
+    console.log(search.name)}
+
+    let hmany1 = persons.filter(item => item['age'] >= 30)
+                        .forEach(item => console.log(item['name']))
+
+    let hmany2 = console.log(persons.filter(item => item['age'] >= 23).length)
+
+    let hmany3 = persons.filter(item => item['name'].startsWith("한"))
+                        .forEach(item => console.log(item['name']))
+    //중간 연산자 > 반환값이 객체배열
+    //forEach 최종연산                    
+    let hmany4 = persons.filter(item => item['name'].startsWith("홍"))
+                        .reduce((item1, item2) => item1['age'] + item2['age'])
+    console.log(persons)
+
+    name1 = persons.toSorted((item1, item2) => {
+        if(item1.name > item2.name)
+            return 1
+        else if(item1.name == item2.name)
+            return 0
+        else   
+            return -1
+    })
+    console.log(name1)
+    name2 = persons.toSorted((item1, item2) => {
+        if(item1.name > item2.name)
+            return -1
+        else if(item1.name == item2.name)
+            return 0
+        else   
+            return 1
+    })
+    console.log(name2)
+
+</script>

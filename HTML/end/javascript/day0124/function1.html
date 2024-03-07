@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    sayHello("남예준");
+
+    function sayHello(name){
+        console.log(`hello ${name}`);
+    }
+
+    //오버로딩 지원 x 
+    //하나의 파일에 함수 이름이 1개만 존재해야 함
+    //매개변수에 기본값 부여 가능 >> 값을 주지 않으면 기본값으로 대체되어짐
+    // 오버로딩과 비슷한 효과를 가져온다.
+
+    function myfunc(a = 1, b = 2, c = 3){
+        console.log(`a = ${a} b = ${b} c = ${c}`);
+        return a + b + c;
+    }
+
+    function myfunc2(a, b = 2, c = 3){
+        console.log(`a = ${a} b = ${b} c = ${c}`);
+        return a + b + c;
+    }
+
+    function showmsg(msg){
+        msg = msg || "blank"
+        console.log(`msg = ${msg}`)
+    }function getCount(count){
+        count = count ?? "noCount"
+        console.log(`count = ${count}`)
+    }
+ // || >  undefinded 연산자를 처리해주는 아이
+ // ??는 null을 처리해주는 애
+ // if문을 통해 error 처리를 안해도 될 수 있도록 해준다.
+    console.log(myfunc2())
+    console.log(myfunc2(2))
+    console.log(myfunc(5))
+    console.log(limitsreturn(100))
+    showmsg()
+    getCount()
+    getCount(5)
+
+    function limitsreturn(lim = 3){
+        let result = 0;
+        for(i = 1; i <= lim; i++){
+            result += i;
+        }
+        return result;
+    }
+
+    //함수표현식 >> 변수에 저장해두고 해당 함수를 이용한다.
+    //변수에 저장해놓고 써야한다 > 보통은 이벤트 핸들러 사용시 많이 사용한다.
+    let myfuntion = function(lim = 3){
+        let result = 0;
+        for(i = 1; i <= lim; i++){
+            result += i;
+        }
+        return result;
+    }
+
+    //forEach 는 함수를 매개변수로 줄 수 있음
+    let plave = ["1남예준", "2한노아", "채밤비", "도은호", "유하민"];
+
+    function showItem(item){
+        console.log(item)
+    }
+    plave.forEach(showItem) // 함수를 매개변수로 받아간다.
+
+    plave.forEach(function(item){
+        console.log(item)
+    })
+    
+    plave.forEach((item) => { console.log(item)})
+
+    console.log("글자수가 3글자 초과인 과일만")
+    let anme = [];  
+    for(i = 0; i <plave.length; i++){
+        if(plave[i].length > 3){
+            anme.push(plave[i])
+        }
+    }
+
+    results = plave.filter(item => item.length > 3) // 반환값이 배열객체
+        .forEach(item => console.log(item))// 반환값이 없음
+    let numbers = [10,2,3,6,8,9,21,20,4,25,33];
+    //위 배열에서 각각 짝수와 홀수를 추출해보세요 (filter 사용하기)
+    num1 = numbers.filter(item => item % 2 == 0)
+        .forEach(item => console.log(item))
+    num2 = numbers.filter(item => item % 2 == 1)
+        .forEach(item => console.log(item))
+    
+    let words = ['school', 'hospital', 'desk', 'chair', 'language',
+                 'house', 'programming', 'survey', 'assembly', 'compiler',
+                 'interpreter' ];
+    word1 = words.filter(item => item.length >= 5).forEach(item => console.log(item))
+    word2 = words.filter(item => item[0] == 'h').forEach(item => console.log(item))
+    word2 = words.filter(item => item.startsWith('h')).forEach(item => console.log(item))
+    word3 = words.filter(item => item.includes('r')).forEach(item => console.log(item))
+
+    //concat > 문자열 및 배열 연결시 사용
+
+    let a = [1,2,3]
+    let b = [3,4,5]
+    let c = a.concat(b)
+
+    console.log(a)
+    console.log(b)
+    console.log(c)
+
+    console.log(c.reduce)
+
+    //flat >> 다차원함수를 1차원으로 변경해줌
+
+    const arr1 = [0, 1, 2, [3, 4]];
+
+    console.log(arr1.flat());
+    // expected output: Array [0, 1, 2, 3, 4]
+
+    const arr2 = [0, 1, [2, [3, [4, 5]]]];
+
+    console.log(arr2.flat());
+    // expected output: Array [0, 1, 2, Array [3, Array [4, 5]]]
+
+    console.log(arr2.flat(2));
+    // expected output: Array [0, 1, 2, 3, Array [4, 5]]
+
+    console.log(arr2.flat(Infinity));
+    // expected output: Array [0, 1, 2, 3, 4, 5]
+
+    //배열 요소에 대해서 지정한 계산을 모두 반영한 뒤 반환
+    const array1 = [1, 4, 9, 16];
+
+    // Pass a function to map
+    const map1 = array1.map((x) => x * 2);
+
+    console.log(map1);
+    // Expected output: Array [2, 8, 18, 32]
+    word1 = words.filter(item => item.length >= 5)
+                .map(item => item.toUpperCase())
+                .forEach(item => console.log(item))
+</script>

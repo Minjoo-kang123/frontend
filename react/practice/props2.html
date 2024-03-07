@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <h1>props : 데이터 부모 컴포넌트가 => 자식컴포넌트</h1>
+    <p>데이터 부모 => 자식(단방향), 자식입장에서 부모의 함수를 호출하는 방식으로 
+        부모한테 변화에 대한 알림을 준다. 
+        props 는 <컴포넌트  key1="값" key2={변수} key3={함수} />
+        props 자체는 JSON <br/> 
+        props.key1, props.key2 .......... <br/>
+        
+        const {name, age, address} = {name:"홍길동", age:33, address:"서울시"};
+        자식컴포넌트 입장에서 props 형태로 받을 수 도 있고 <br/>
+        자식컴포넌트 입장에서  ( {name, age, address})<br/>
+        
+        단점 : 컴포넌트가 복잡해지면 어느 컴포넌트간에 통신이 이루어지는지를 알기 어렵다.
+        따라서 리덕스를 많이 사용한다. 리덕스는 공유공간즘으로 해석하면 된다. 
+        react와는 별도의 다른 라이브러리이다. 형제끼리는 주고 받지 못하며 부모를 통해서만 주고 받을 수 있다.
+    </p>
+
+    <hr>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+                <Parent/>
+            </div>
+            ,//첫번째 매개변수 - 트리구조의 태그집합  
+            
+            document.getElementById('root')//두번째 매개변수 - 시작 태그 객체
+        ); 
+        //최상위 부모
+        //자신의 데이터는 state에 저장함
+        function Parent(){
+            //React.usestate("값또는 참조")-react의 모든 컴포넌트는
+            //state를 가짐, state에 계속 사용할 값을 저장한다.
+            //React.useState() 함수는 state에 값을 저장하고
+            // 해당 메모리 주소와 메모리 주소를 변경하는 함수주소 2개를 반환한다.
+            //함수명은 마음대로 해도 되나 묵시적으로 카멜표기법을 이용한 set변수명으로 사용한다.
+            const [key2, setKey2] = React.useState("새로운키");
+            const [count, setCount] = React.useState(0);
+            //중요한 
+            const parentFunc = ()=>{
+                alert("부모함수호출");
+            }
+            const increase = ()=>{ setCount(count + 1) }
+            const decrease = ()=>{ setCount(count - 1) }
+            return (
+                <div>
+                    <h1>최상위 부모</h1>
+                    <h3>now count : {count}</h3>
+                    {/*
+                        함수 주소를 전달해야한다. 변수명만, {}가 있으면 함수를 호출 한 다음에 반환 값을 저장한다.
+                        클릭할 때가 아니라 해당 컴포넌트가 렌더링 될 떄 함수가 먼저 호출된다.
+                    
+                    <button type="button" onClick={increase}>증가</button>
+                    <button type="button" onClick={decrease}>감소</button>
+                    */}
+                    <Child1 increase = {increase} decrease={decrease}/>
+                    <Child2 key1 = {increase} key2={decrease} count = {count}/>
+                </div>
+            )
+        }
+        //자식이 부모에게서 전달되어온 increase와 decrease 함수를 가져와서 씀
+        function Child1(props){
+            return (
+                <div>
+                    <button type="button" onClick={props.increase}>증가</button>
+                    <button type="button" onClick={props.decrease}>감소</button>
+                </div>
+            )
+        }
+
+        function Child2({key1, key2, count}){
+            return (
+                <div>
+                    <h4>자식 컴포넌트 count {count}</h4>
+                    <button type="button" onClick={key1}>증가</button>
+                    <button type="button" onClick={key2}>감소</button>
+                </div>
+            )
+        }
+    </script>
+</body>
+</html>

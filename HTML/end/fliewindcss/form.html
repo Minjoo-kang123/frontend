@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get" name = "myform">
+        이름 : <input type="text" name="username">
+        </br>
+        전번 : <input type="text" name="userphone">
+        </br>
+        성별 : 
+        <input type="radio" name="gender" id="1" value="Female"/> 여
+        <input type="radio" name="gender" id="2" value="Male"/> 남</br>
+        
+        나이 : 
+        <input type="radio" name="age" id="1" value="10"/> 10대 &nbsp;
+        <input type="radio" name="age" id="2" value="20"/> 20대&nbsp;
+        <input type="radio" name="age" id="3" value="30"/> 30대&nbsp;
+        <input type="radio" name="age" id="4" value="40"/> 40대&nbsp;</br>
+
+        
+        선호 : 
+        <input type="checkbox" name="favorite" id="1" value="10"/> 야구 &nbsp;
+        <input type="checkbox" name="favorite" id="2" value="20"/> 축구 &nbsp;
+        <input type="checkbox" name="favorite" id="3" value="30"/> 농구 &nbsp;
+        <input type="checkbox" name="favorite" id="4" value="40"/> 공놀이를 왜 &nbsp;</br>
+        
+        <select name="plave" id="">
+            <option selected>==선택하세요==</option>
+            <option value="1">남예준</option>
+            <option value="2">한노아</option>
+            <option value="3">채밤비</option>
+            <option value="4">도은호</option>
+            <option value="5">유하민</option>
+        </select>
+        </br>
+        <textarea maxlength="20"></textarea>
+        <button type="button" onclick="goSend()">보내기</button>
+    </form>
+</body>
+</html>
+
+<script>
+    function goSend(){
+        /*
+            폼을 전송 >> 폼에 대한 객체 참조를 가져와야함
+
+        */
+       var frm = document.myform;
+       frm.submit();
+    }
+</script>

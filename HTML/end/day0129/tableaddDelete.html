@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>품목</th>
+                <th>수량</th>
+                <th>단가</th>
+            </tr>
+        </thead>
+        <tbody id = 'tbody'>
+            <tr id = "colum1"></tr>
+            <tr id = "colum2"></tr>
+            <tr id = "colum3"></tr>
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        document.getElementById("btnadd")
+    }
+    let data = [
+        {productName : "기다릴게", productCnt : 12, productPrice : 15000},
+        {productName : "왜요왜요왜", productCnt : 15, productPrice : 12300},
+        {productName : "여섯번쨰여름", productCnt : 14, productPrice : 20500},
+        {productName : "merryplismas", productCnt : 19, productPrice : 25000}
+    ]
+    function load(){
+        let tbody = document.getElementById("tbody")
+
+        data.forEach((item) => {
+            
+        })
+
+        document.getElementById("btnremove").addEventListener("click", ()=>{
+            let tbody = document.getElementById("tbody");
+            if(tbody.rows.length){
+                tbody.deleteRow()
+            }
+        })
+    }
+</script>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            margin: 0 auto;
+            width: 80%;
+            border: 1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+            padding: 10px 0px;
+        }
+        tr, td, th{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>근무시간</th>
+                <th>시간당급여액</th>
+                <th>기본액</th>
+                <th>초과수당</th>
+                <th>합계</th>
+                <th>세액</th>
+                <th>실지불액</th>
+            </tr>
+        </thead>
+        <tbody id = "tbody">
+
+        </tbody>
+    </table>
+    
+    <div id = "total"></div>
+</body>
+</html>
+
+<script>
+    let work = {
+        "base_time" : 20,
+        "list" : [
+            {"id" : 1, "username":"홍길동", "work_time":40, "per_pay":10000},
+            {"id" : 2, "username":"송민헌", "work_time":20, "per_pay":20000},
+            {"id" : 3, "username":"장길산", "work_time":30, "per_pay":30000},
+            {"id" : 4, "username":"임꺽정", "work_time":10, "per_pay":40000},
+            {"id" : 5, "username":"강민구", "work_time":30, "per_pay":10000}
+        ]
+    };
+
+    window.onload = ()=>{
+        let total = 0
+        let tbody = document.getElementById("tbody")
+        work["list"].forEach((item) => {
+            var row = tbody.insertRow(tbody.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+
+            let money1 = (item.per_pay * item.work_time);
+            let money2 = 0
+            if (item.work_time > work.base_time)
+                money2 = (item.work_time - work.base_time) * 0.5 * item.per_pay
+            let money3 = money1 + money2
+
+            cell1.innerHTML = item.id;
+            cell2.innerHTML = item.username;
+            cell3.innerHTML = item.work_time;
+            cell4.innerHTML = (item.per_pay).toLocaleString()
+            cell5.innerHTML = money1.toLocaleString();
+            cell6.innerHTML = money2.toLocaleString();
+            cell7.innerHTML = money3.toLocaleString();
+            cell8.innerHTML = (parseInt(money3 * 0.033)).toLocaleString();
+            cell9.innerHTML = (parseInt(money3 * 0.967)).toLocaleString();
+            total += parseInt(money3 * 0.967);
+        })
+        document.getElementById("result").innerHTML = `총 지급액 : ${total}`
+    }
+    
+    
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="color1">셀렉터 1</h1>
+    <h1 id="color2">셀렉터 2</h1>
+
+    <p class = "colorRed">클래스 접근</p>
+    <p class = "colorRed">클래스 접근</p>
+    <p class = "colorRed">클래스 접근</p>
+    <p class = "colorRed">클래스 접근</p>
+    <p class = "colorRed">클래스 접근</p>
+
+    <p class = "colorblue">클래스 접근</p>
+    <p class = "colorblue">클래스 접근</p>
+    <p class = "colorblue">클래스 접근</p>
+    <p class = "colorblue">클래스 접근</p>
+    <p class = "colorblue">클래스 접근</p>
+
+</body>
+</html>
+<script>
+    $(()=>{
+        let h1 = $("h1"); // 배열로 가져온다.W
+        h1.css("color", "#ff5484")
+        $("#color1").css("color", "#f45221")
+        $("#color2").css("color", "blue")
+        // 속성값을 지정해 부여하는 것으로 실제 사용은 이것을 많이함.
+        $(".colorRed").prop("style", "color : #f45221") 
+        $(".colorblue").css("color", "blue")
+    }
+    )
+</script>

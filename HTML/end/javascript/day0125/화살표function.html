@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        화살표함수가 함수의 매개변수로 전달되거나 이벤트 핸들러인경우
+        매개변수나 이벤트 핸들러 저장하는 변수에 저장된다
+        이름이  없어서 어딘가에 저장해야한다 > 변수에 
+    */
+   function fAdd(x, y){
+    return x + y;
+   }
+   let add = (x, y) => x +y ;
+   console.log(fAdd(3, 4), add(2, 4))
+
+
+   function fisLeap(year){
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+            return true;
+
+        return false;
+   }
+
+   let isLeap = (year) => (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
+
+   
+   console.log(fisLeap(2024), isLeap(2003))
+
+   function fsigma(limit){
+        s = 0;
+        for(i =1;i<=limit;i++){
+            s +=limit
+        }
+        return s;
+   }
+
+   let sigma = (limit=10) => {
+        s = 0;
+        for(i =1;i<=limit;i++){
+            s +=limit
+        }
+        return s;
+   }
+   console.log(fsigma(2024), sigma(2003))
+   //this 불가
+   
+</script>

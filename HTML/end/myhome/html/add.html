@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id = "frm">
+        x : <input type="text" name="x" id="x"><Br/>
+        y : <input type="text" name="y" id="y"><Br/>
+        <select name="operator" id="operator">
+            <option value="1">더하기</option>
+            <option value="2">빼기</option>
+            <option value="3">곱하기</option>
+            <option value="4">나누기</option>
+        </select><br/><br/>
+        <button type="button" id = "btn">계산</button>
+    </form>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        let button = document.getElementById("btn")
+        button.addEventListener("click", ()=>{
+            let frm = document.getElementById("frm")
+            frm.action = "/add_result"
+            frm.method = "GET"
+            frm.submit();
+        })
+    }
+</script>

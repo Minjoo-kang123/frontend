@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>객체 메서드 추가</h3>
+    <p>json 객체 저장방식이 키와 값 형태로 저장하는데 값에 함수주소 저장이 가능하다.
+        멤버 키에 접근하려면 this를 사용해야한다.</p>
+</body>
+</html>
+<script>
+    let persons = {
+        name : "홍길동",
+        age : 23,
+        phone : "01080195950",
+        setValue:function(name = "", age = 0, phone=""){
+            this.name = name;
+            this.age = age;
+            this.phone = phone;
+        },
+        display:function(){
+            console.log(this.name, this.phone, this.age)
+        },
+        getName : ()=>{
+            console.log(this.name);
+        }, line:()=>{
+            console.log("------")
+        }
+    }
+    persons.display();
+    persons.setValue("남예쥰", 25, "012554444")
+    persons.display();
+    let students = {__proto__:persons, "kor" : 45, "eng": 50, "math" : 554}
+    console.log(students.name)
+    console.log(students.kor); // 이렇게 상속이 가능하다.
+</script>

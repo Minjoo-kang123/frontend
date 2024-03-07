@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="goClick()">이벤트 핸들러1</button>
+    <button type="button" id="btnPress">이벤트 핸들러2</button>
+    <button type="button" id="btnPress2">이벤트 핸들러2</button>
+</body>
+</html>
+<script>
+    /*window.onload = 함수를 전달, html 문서가 모두 메모리로 로당 된 후 
+    여기에 전달된 함수를 호출하기로 한다.
+    html 아래 작성된 함수에 대해 불러오지 못하는 함수가 없도록 하는 방법*/
+    //버튼 객체 주소가 저장됨(현재 가장 사용되는 방법)
+    window.onload = function(){
+        var btnPress = document.getElementById("btnPress"); 
+        btnPress.addEventListener("click", function(){
+            alert("클릭 2")
+        });
+        //함수의 매개변수로 우리는 함수 전달 가능
+    }
+        var btnPress2 = document.getElementById("btnPress2"); 
+        btnPress2.addEventListener("click", ()=>{
+            alert("클릭4 ")
+        });
+        //화살표 함수도 가능 but 전달자가 업음 그렇게 괄호 생략 불가능ㅇ
+
+    function goClick(){
+        alert("클릭 1")
+    }
+</script>

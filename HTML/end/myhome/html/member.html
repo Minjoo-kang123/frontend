@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <meta charset="UTF-8">
+        <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        td{
+            padding-bottom: 10px;
+            padding-right: 20px;
+        }table{
+            margin-top: 50px;
+        }
+    </style>
+<body>
+    <!--menu-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>    
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!--내용-->
+    <div class="container">
+        <div style="margin-top: 10px; margin-bottom: 20px;">
+            <table class="table">
+                <colgroup>
+                    <col style="width: 30%;">
+                    <col style="width: 70%;">
+                </colgroup>
+                <tr>
+                    <th colspan="2">회원가입
+                        <input type="hidden" name="idchkyn" id = "idchkyn" value="">
+                    </th>
+                </tr>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" name="userid" id="userid">
+                        <button type="button" id="idCheck">중복여부확인</button>
+                        <div id = "result"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" name="pwd" id="pwd"></td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td><input type="email" name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <td>
+                       전화번호
+                    </td>
+                    <td>
+                        <input type="text" name="phone" id="phone">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="button" id = "insert">회원가입</button></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        let button = document.getElementById("idCheck")
+        let btn = document.getElementById("insert")
+        button.addEventListener("click", ()=>{
+            axios.get('/idCheck', {
+            params: {
+                "userid": document.querySelector("#userid").value
+            }})
+            .then(function (response) {
+                let data = response.data
+                if (data.idchk == "N"){
+                    document.querySelector("#result").innerHTML = `아이디 중복`
+                }else{
+                    document.querySelector("#result").innerHTML = `아이디 중복 아님`
+                    document.querySelector("#userid").readOnly = true
+                    document.querySelector("#idCheck").disabled  = true 
+                    document.querySelector("#idchkyn").value  = "y"
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+        })
+        btn.addEventListener("click", ()=>{
+            if(document.querySelector("#idchkyn").value  == "y"){
+                axios.get('/idCheck', {
+                params: {
+                    "userid": document.querySelector("#userid").value
+                }})
+                .then(function (response) {
+                    let data = response.data
+                    if (data.idchk == "N"){
+                        document.querySelector("#result").innerHTML = `아이디 중복`
+                    }else{
+                        document.querySelector("#result").innerHTML = `아이디 중복 아님`
+                        document.querySelector("#userid").readOnly = true
+                        document.querySelector("#idCheck").disabled  = true 
+                        document.querySelector("#idchkyn").value  = "y"
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+            }
+        })
+    }
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <p>
+        props : 데이터를 부모 컴포넌트 >> 자식 컨포넌트 로 전달
+        단방향 전단말 가능함. 자식 입장에서 부모의 함수를 호출하는 방식임
+        부모한테 변화에 대한 알림을 준다
+        props는 <컴포넌트 key1 = "값1" key2={변수} key3=함수>
+    </p>
+    <div id = "root"></div>
+</body>
+</html>
+
+<script type="text/babel">
+    let todoList = [
+        {id : 1, todo:"생방보기"},
+        {id : 2, todo:"라면먹기"},
+        {id : 3, todo:"김밥"},
+        {id : 4, todo:"신청서"},
+        {id : 5, todo:"자기"}
+    ];
+    //props라는 파라미터가 항상 있다.
+    //부모컴포넌트가 자식 컴포넌트한테 데이터를 전달 할 수 잇다.   
+    function ListTodo(props){
+        return (
+            <div>
+                <ul>
+                    {props.todoList.map((item)=>{
+                        return(
+                            <li>    {item.id} : {item.todo}  </li>
+                        ) 
+                    })}
+                </ul>
+            </div>
+        )
+    }
+
+    
+    ReactDOM.render(
+    <ListTodo todoList={todoList}/>
+    ,document.getElementById("root")
+    )
+</script>

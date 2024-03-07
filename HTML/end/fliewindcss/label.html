@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="username">이름 : </label> <!-- 라벨을 선택하더라도 해당 text를 선택하게 해줌-->
+        <input type="text" name = "username" id = "username">
+
+        <fieldset>
+            <legend>멤버를 선택하세요</legend>
+            <label for="mem1">한노아</label>
+            <input type="checkbox" name="plave" id="mem1">
+            <label for="mem2">남예준</label>
+            <input type="checkbox" name="plave" id="mem2">
+            <label for="mem3">채밤비</label>
+            <input type="checkbox" name="plave" id="mem3">
+        </fieldset>
+
+        <label for="email">이메일</label>
+        <input type="email" name="email" id="email" required placeholder="이메일을 작성핫요"><br>
+        <!--
+            required 속성 : 반드시 값을 입력해야함
+            placeholder : 설명
+            readonly : 고정 값을 둠. 해당 값을 무조건 전달
+            disabled : 작성 불가 및 값 전송도 하지 않음
+            size : 보이는 크기
+            maxlenght : 텍스트 크기를 제한한다. 
+        -->
+        <input type="file" name="file" id="file"><br>
+        <input type="hidden" name="idcheckyn">
+        <!--
+            파일 전송을 위해서는 메소드는 post 이여야 하며 enctype이 multipart/form-data 가 있어야 전송이 가능하다
+        -->
+        시작일 : <input type="date" name="" id=""><br>
+        <button>보내기</button>
+    </form>
+</body>
+</html>

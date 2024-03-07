@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    year = prompt("올해는 몇년도인가요?")
+    year = parseInt(year);
+    if(year != null){
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+            alert(`${year}은 윤년입니다.`);
+        }else{
+            alert(`${year}은 윤년이 아닙니다.`);
+        }
+    }
+</script>

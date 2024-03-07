@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ajax html</h1>
+    <div id = "result" style="border: 1px solid red; width: 400px; height: 100px;"></div>
+    <button type="button" id = "btnSend">시작</button>
+</body>
+</html>
+<script>
+    //fetch 함수가주는 결과는 promise 객체이다.
+    //promise가 일을 종료할 때까지 기다린다. then 구문
+    document.querySelector("#btnSend").addEventListener('click', ()=>{
+        fetch("http://localhost:8080/getUserInfo")
+        .then((res)=>{
+            return res.json(); //response 객체 내에 있는 데이ㅓ만날리나.
+        })
+        .then((res)=>{
+            //문자열이 아닌 jsondmfh wjsghkstlzu dhsek.
+            console.log(res)
+        }).catch((error)=>{
+            console.log(error)
+        })
+    })
+</script>

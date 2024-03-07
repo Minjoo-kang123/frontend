@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ajax html</h1>
+    <div id = "result" style="border: 1px solid red; width: 400px; height: 100px;"></div>
+    <button type="button" id = "btnSend">시작</button>
+</body>
+</html>
+<script>
+    document.querySelector("#btnSend").addEventListener('click', ()=>{
+        let xmlHttp = new XMLHttpRequest(); //통신을 담당하는 객체
+        //onreadystatechage : 어떤 산태가되었던 서버로부터 수신이 되면
+        //onreadystatechangedp wjsekfehls gkatnfmf ghcnf
+        xmlHttp.onreadystatechange = function (){
+            console.log(this.readyState, this.state, this.statusText);
+            if(this.readyState == 4 && this.status == 200){
+                let userInfo = JSON.parse(xmlHttp.responseText);
+                document.querySelector("#result").innerHTML= userInfo.name + userInfo.phone;
+            }
+        }
+        xmlHttp.open("GET", "http://localhost:8080/getUserInfo");
+        xmlHttp.send();
+    })
+</script>

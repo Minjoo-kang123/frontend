@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            이름 : <input type="text" name="name" id="name">
+            <br>시급 :<input type="text" name="hour" id="hour">
+            <br>근무시간<input type="text" name="time" id="time">
+            <br><button type="button" id="btn">계산</button>
+        </form>
+        
+        <div id = "results" style="border: 1px solid red; height: 50px;">
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        let btnAdd = document.getElementById("btn");
+        btnAdd.addEventListener('click', () =>{
+            let value1 = document.getElementById('name').value;
+            let value2 = parseInt(document.getElementById('hour').value);
+            let value3 = parseInt(document.getElementById('time').value);
+
+            let result = value1+"님의 주급은 " + value2 * value3+"원 입니다."
+            console.log(result);
+            document.getElementById("results").innerHTML = result;
+            console.log(numbers)
+        })    
+    }
+
+    /*document.getElementById('btn').onclick = function() {
+    let value1 = document.getElementById('name').value;
+    let value2 = parseInt(document.getElementById('hour').value);
+    let value3 = parseInt(document.getElementById('time').value);
+
+    let result = value1+"님의 주급은 " + value2 * value3+"원 입니다."
+    console.log(result);
+    document.getElementById("results").innerHTML = result;
+    console.log(numbers)
+    }*/
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="text" name="num" id="num">
+            <button type="button" id="btn">오름차순 정렬</button>
+        </form>
+        <div id = "results" style="border: 1px solid red; height: 50px;">
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById('btn').onclick = function() {
+    let value = document.getElementById('num').value;
+    let numbers = value.split(",");
+    
+    numbers = numbers.map(item => item = parseInt(item)).sort((item1, item2) => item1 - item2);
+    let result = numbers.join(",");
+    console.log(result);
+    document.getElementById("results").innerHTML = result;
+    console.log(numbers)
+    }
+</script>

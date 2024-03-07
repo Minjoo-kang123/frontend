@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id = "root"></div>
+</body>
+</html>
+
+<script type="text/babel">
+    function Calcul(){
+        const [result, setResult] = React.useState(0)
+        const [x, setX] = React.useState(0)
+        const [y, setY] = React.useState(0)
+        let add = ()=>{
+            console.log(x, y)
+            setResult(parseInt(x) + parseInt(y))
+        }
+        let minus = ()=>{
+            setResult(parseInt(x) - parseInt(y))    
+        }
+        let time = ()=>{
+            setResult(parseInt(x) * parseInt(y))
+        }
+        let div = ()=>{
+            setResult(parseInt(x) / parseInt(y))
+        }
+
+        let onChange = (event)=>{
+            if(event.target.id == "x")
+                setX(event.target.value)
+            else   
+                setY(event.target.value)
+        }
+        return (
+            <div>
+                x : <input type="text" name="x" id="x" value = {x} onChange = {onChange}/>
+                y : <input type="text" name="y" id="y" value = {y} onChange = {onChange}/>
+                <br/>
+                result : <input type="text" name="result" id="result" value = {result} readOnly/>
+                <br/>
+                <button type="button" onClick={add}>+</button>
+                <button type="button" onClick={minus}>-</button>
+                <button type="button" onClick={time}>x</button>
+                <button type="button" onClick={div}>/</button>
+            </div>
+        )
+    }
+
+    ReactDOM.render(
+            <Calcul/>
+            ,
+            document.getElementById("root"))
+</script>

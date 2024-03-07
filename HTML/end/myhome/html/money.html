@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id = "frm" name = "frm">
+        이름 :   <input type="text" name="name" id="name"><br/>
+        시간 :   <input type="text" name="time" id="time"><br/>
+        시급 :   <input type="text" name="perpay" id="perpay"><br/>
+        <button type="button" id = "btn">계산</button>
+    </form>
+    <div id = "result"></div>
+</body>
+</html>
+<script>
+/*
+    window.onload = ()=>{
+        let button = document.getElementById("btn")
+        button.addEventListener("click", ()=>{
+            let frm = document.getElementById("frm")
+            frm.action = "/money_result"
+            frm.method = "GET"
+            frm.submit();
+        })
+    }
+*/    
+    window.onload = ()=>{
+        let button = document.getElementById("btn")
+        button.addEventListener("click", ()=>{
+            axios.get('/money_result', {
+            params: {
+                "name": document.querySelector("#name").value,
+                "time": document.querySelector("#time").value,
+                "perpay": document.querySelector("#perpay").value
+            }})
+            .then(function (response) {
+                let data = response.data
+                document.querySelector("#result").innerHTML = 
+                `${data.name}님의 시급은 ${data.result}입니다.`
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+        })
+    }
+
+    
+</script>

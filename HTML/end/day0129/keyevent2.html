@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--onkeypress는 잘 쓰지 않음-->
+    <input type="text" name="" id="number" onkeypress="isNumber()">
+    <input type="text" name="" id="number2" oninput="regTest()">
+</body>
+</html>
+<script>
+    function isNumber(){
+        if(event.value <'0' || event.value > '9'){
+            return event.returnValue = false; //숫자 이외의 것을 넣지 못함
+        }
+    }function regTest(){
+        num = document.getElementById("number2");
+        num.value - num.value.replace(/[^0-9]/g, "")
+        //정규식 : 패턴을 의미함
+        // /패턴/ 범위 의미
+        // /[]
+    }
+</script>

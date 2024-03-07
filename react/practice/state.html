@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1>SPA</h1><hr>
+    <div id = "root"></div>
+    <script type="text/babel">
+        /*
+            사용자 정의 컴포넌트를 만든다. React.Component를 상속받는다
+            이를 상속받으며 반드시 오버라이딩 해야하는 함수로는 -render : ui 구성을 한다.
+        */
+        function AppClass(){                    
+            /*
+                자체적으로 state를 지니고 있다
+                상태정보 변수들을 state에 저장하고 이 변수값을 바꾸면
+                state를 확인해 바뀐부분만 다시 렌더링을 한다
+                state가 클래스 기반 컴포넌트에만 존재했으나 이후 함수기반에서도 사용할 수 있게 되었다.
+                함수기반에 hook을 쓰나, 추후 사용
+            */
+
+            /*
+                state 한ㅌ ㅔ변수를 만든 후 그 주소를 준다.
+                React.useState(초기데이터); state 공간에 초기데이터
+                주소공간
+                변수주소 함수주소가 온다. 함수명은 마음대로 할 수 있음
+                가급적 set변수명 ex) setName 첫글자를 대문자로 쓰는 카멜표기법을 사용
+            */
+            
+            const [name, setName] = React.useState("홍길동")
+            const [age, setAge] = React.useState(23)
+               const click = ()=>{
+                alert("hello")
+               }
+               /*
+                setName("라면")
+                setAge(12)
+
+                해당 코드는 불가하다. 무한 render 상태에 빠지게 된다<div class=""></div>
+               */
+              const setValue = ()=>{
+                setName("임꺽정")
+                setAge(12);
+              }
+               return(
+               <div>
+                    <h2>{name} {age}</h2>
+                    <button type="button" onClick = {setValue   }>값바꾸기</button>
+                </div>
+               )
+        }
+        ReactDOM.render(
+            <div>
+                <AppClass/>    
+            </div>
+        ,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

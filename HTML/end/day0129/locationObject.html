@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id = "btnMove">이동</button>
+</body>
+</html>
+<script>
+    //자바스크림트를 이용해 다른페이지로 이동하고자 할 때 form 태그를 사용함
+    window.onload = ()=>{
+        document.querySelector("btnMove").addEventListener("click", ()=>{
+            location.href = "https://www.naver.com"; //get
+        })
+    }
+</script>

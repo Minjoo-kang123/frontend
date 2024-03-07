@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1></h1>
+
+    <div id = "counter">0</div>
+    <button type="button" id = "increase">increase</button>
+    <button type="button" id = "decrease">decrease</button>
+</body>
+</html>
+<script>
+    const counter = document.getElementById("counter")
+    const plus = document.getElementById("increase")
+    const minus = document.getElementById("decrease")
+
+    plus.addEventListener("click", ()=>{
+        counter.value() +=1
+    })
+</script>

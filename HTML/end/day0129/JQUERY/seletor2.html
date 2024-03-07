@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="color1">셀렉터 1</h1>
+    <h1 id="color2">셀렉터 2</h1>
+
+    <p>셀렉터 1</p>
+    <p>셀렉터 2</p>
+    <p>셀렉터 3</p>
+    <p>셀렉터 4</p>
+    <p>셀렉터 5</p>
+    <p>셀렉터 6</p>
+    <p>셀렉터 7</p>
+    <p>셀렉터 8</p>
+
+    <button type="button" id = "btnAll"> 냠냠 </button>
+    <button type="button" id = "btn1st"> 냠냠 </button>
+</body>
+</html>
+<script>
+    $(()=>{
+       $("#btnAll").click(function name(){
+            //$("*").prop("style", "color : pink");
+            $(this).prop("style", "color : pink");
+            //jquery > error 를 보여주지 않음이 문제 
+            $(this).hide();
+       })
+       $("#btn1st").click(function name(){
+        $("p:first").css("background-color", "#456581")
+        console.log("2")
+       })
+    }
+    )
+</script>

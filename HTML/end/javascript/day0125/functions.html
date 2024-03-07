@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>filter / map / find sort reduce</h2>
+</body>
+</html>
+<script>
+    s1 = "1, 22, 21, 52, 47, 56, 47, 58, 35, 95, 45"
+
+    s2 = s1.split(", ");
+    console.log(s2);
+    console.log(s2.join(" "));
+
+    s2 = s2.map(item => parseInt(item));
+    console.log(s2)
+    s3 = s2.filter(item => item%2 == 0)
+    console.log(s3)
+    s3 = s2.find(item => item%2 == 0)
+    console.log(s3)
+    s3 = s2.find(item => item%2 == 2312)
+    console.log(s3) // 존재하지 않ㅇ르 시에는 undifined
+
+    
+    s3 = s2.findIndex(item => item%2 == 2312)
+    console.log(s3) // 존재하지 않을 시에는 -1
+    /*
+        filter의 반환값은 true or false 여야 함 그래서 true 만 모인다
+        find는 조건식에 부합하는 가장 처음 나오는 하나반 반환
+    */
+/*
+   console.log("데이터 정렬")
+   s2.sort()
+   console.log(s2)
+   s2.sort((item1, item2) => item1-item2)
+   console.log(s2)
+*/
+   
+   s3 = s2.toSorted((item1, item2) => item1-item2)
+   //오름차순은 1 - 2 / 내림자순은 2 - 1
+   console.log(s2)
+   console.log(s3)
+    //배열의 합
+    //누적연산을 수행 시 많이 사용함
+    //pre 이전 값, current 이후 값
+   sum = s2.reduce((prev, current) => prev+current)
+   console.log(sum)
+
+   arr = [
+   [1, 2, 3],
+   [4, 5, 6],
+   [7, 8, 9],
+   [10, 11, 12]];
+
+   console.log(arr)
+   //2차원 배열
+   arr.map((item, index) =>{
+    item.map((item2, li)=>{
+        item2 = item2 + 5;
+        return item2;
+    });
+    return item;
+   })
+   console.log(arr)
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //_는 되지만 -눈 사용 불가
+    let person = {"name" : "남예준", "age" : 23, "add" : "마포구"};
+    console.log(person.name);
+    console.log(person["name"])
+    
+    let person2 = '{"name" : "남예준", "age" : 23, "add" : "마포구"}';
+    console.log(person2);
+
+    //json형태이나 이가 String으로 오는 경우도 다수이다. 그러나 parsing 즉 형변환이 가능하다
+
+    let person3 = JSON.parse(person2);
+    console.log(person3);
+
+    //json 요소 추가
+    person3["friend"] ="Noah";
+    
+    person3["display"] = function(){
+        console.log("이름", this.name);
+        console.log("age", this.age);
+        console.log("add", this.add);
+        console.log("friend", this.friend);
+    }
+
+    person3["display"]();
+</script>

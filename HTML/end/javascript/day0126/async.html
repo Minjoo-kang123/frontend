@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>async가 있어야 await 는 함께 사용해야 함</p>
+</body>
+</html>
+<script>
+    async function sigma(limit = 10){
+        
+        if(limit < 10)
+            throw "10이상의 값을 해라"
+        s = 0
+        for(i=1; i <= limit; i++){
+            s += i;
+        }
+        return s;
+    }
+    async function main(){
+        sigma(9).then((r) =>{
+            console.log(9)
+        })
+    }
+
+    main()
+</script>

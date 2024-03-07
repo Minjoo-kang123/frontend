@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1>SPA</h1><hr>
+    <div id = "root"></div>
+    <script type="text/babel">
+        /*
+            사용자 정의 컴포넌트를 만든다. React.Component를 상속받는다
+            이를 상속받으며 반드시 오버라이딩 해야하는 함수로는 -render : ui 구성을 한다.
+        */
+
+        
+        function AppClass(){
+            /*
+                {}안에 코드를 두어야한다.
+                Style 은 일반 html과는 다르게 적용한다.{json} 객체를 이용해서 정의된다
+                속성중에  - 들어가는 것은{snake 표기법}은 카멜 표기법으로 바꿔야한다.
+                - 뒤에 오는 글자를 대문자로 바꾸는 것이다. ex) background-color ==> backgrounColor
+                함수 안에 직접 넣을때만 이렇게 하며, 별도의 css 파일을 이용할 경우에는 동일하게 이용하면 된다.
+            */
+                return(
+                    <div>
+                        <h3 style={{color : "red"}}>사용자 컴포넌트</h3>    
+                    </div>
+                )
+            }
+
+        
+        ReactDOM.render(
+            <div>
+                <AppClass/>    
+                <AppClass/>    
+                <AppClass/>    
+                <AppClass/>    
+            </div>
+        ,
+            document.getElementById("root")
+        );
+        /*
+            첫번쨰 매개변수 - 트리구조와 태스집팜
+            두번째 매개변수 0 시작 태그 개채
+        */
+    </script>
+</body>
+</html>

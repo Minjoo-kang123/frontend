@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+</head> 
+<body>
+    <div>
+        사용가능 언어 <br/>
+        <input type="checkbox" name="language" id="" value="1">python<br/>
+        <input type="checkbox" name="language" id="" value="2">java<br/>
+        <input type="checkbox" name="language" id="" value="3">js<br/>
+        <input type="checkbox" name="language" id="" value="4">mssql<br/>
+        <input type="checkbox" name="language" id="" value="5">oracle<br/>
+        <input type="checkbox" name="language" id="" value="6">c++<br/>
+       
+        <button type="button" id="selectAll">전체선탣</button>
+        <button type="button" id="deninedAll">전체선탣해제</button>
+    </div>
+</body>
+</html>
+<script>
+    $(()=> {
+      $("#selectAll").click(()=>{   $("input[type=checkbox][name=language]").prop("checked", true);   })
+      $("#deninedAll").click(()=>{   $("input[type=checkbox][name=language]").prop("checked", false);   })
+    })
+</script>

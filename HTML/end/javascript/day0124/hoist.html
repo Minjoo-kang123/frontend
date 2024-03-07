@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    a = 100;
+    console.log("a =" , a);
+
+    var a;
+    console.log("a =", a);
+
+    let msg = "hello";
+    if(true){
+        let  msg = "play";
+    } /*var의 경우는 이미 만들어진 아이를 참조하나 
+    let의 경우는 해당 구문 안에만 존재하는 변수로 새로 만들고 다시금 지워진다.*/
+    console.log(msg); 
+
+    const myBirth = "2001.02.10"; // const 는 상수이기 떄문에 변경시 오류
+
+    const person = {name :'한노아', age : 24, address : '카엘룸'};
+    console.log(person);
+
+    person.name = 'bambi'; //상수의 변경은 불가하나 상수의 요소 변경은 가능함
+    //그러나 요소를 바뀔 시 순서대로 바뀌는 것이 아닌 전부 바뀜
+    //객체 주소가 상수임!! 그 내부에 있는 요소들은 상수가 아님
+    console.log(person)
+
+    person = {name :'남예준', age : 24, address : '아스테룸'};
+
+
+</script>

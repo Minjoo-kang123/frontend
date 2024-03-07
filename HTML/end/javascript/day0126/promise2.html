@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>promise 2</h3>
+</body>
+</html>
+
+<script>
+    limit = 99
+    new Promise((resolve, reject) =>{
+        i = 1;
+        s = 0;
+        if(limit < 100){
+            reject("100보다 큰 값 넣으세요")
+        }
+        for(i=1; i <= limit; i++){
+            s += i;
+        }
+        resolve(s);
+    })
+
+    
+    .then((res) =>{
+        console.log("합계 : ", res);
+    }).catch((msg)=>{
+        console.log(msg);
+    })
+</script>   

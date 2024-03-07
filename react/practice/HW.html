@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div id = "root">
+
+    </div>
+</body>
+</html>
+<script type="text/babel">
+    function App(){
+        const [score, setScore] = React.useState({name:"", kor : 0, eng : 0, math : 0})
+        const [scoreList, setScoreList] = React.useState([])
+        const {name, kor, eng, math, total, avg} = score; //모던스크립트의 해체
+        const nameChange = (e)=>    setScore({...score, name : e.target.value})
+        const korChange = (e)=>    setScore({...score, kor : e.target.value})
+        const engChange = (e)=>    setScore({...score, eng : e.target.value})
+        const mathChange = (e)=>    setScore({...score, math : e.target.value})
+
+        const append = (e)=>{
+            setScoreList(scoreList.concat(score))
+            setScore({name:"", kor : "", eng : "", math : ""});
+        }
+        return(
+            <div>
+                이름 <input type="text" onChange={nameChange} value = {name}/><br/>
+                국어 <input type="text" onChange={korChange} value = {kor}/><br/>
+                영어 <input type="text" onChange={engChange} value = {eng}/><br/>
+                수학 <input type="text" onChange={mathChange} value = {math}/>
+                <button type="button" onClick={append}>추가</button>
+                <PrintList scoreList = {scoreList}/>
+            </div>
+        )
+    }
+    function PrintList(props){
+        return(
+            <table className = "table table-dark bg-dark">
+            
+            {
+                props.scoreList.map((item, key)=>{
+                    let total = parseInt(item.eng) + parseInt(item.math) + parseInt(item.kor)
+                    let avg = (total/3)
+                return (<tr>
+                    <td>이름 : {item.name}</td>
+                    <td>국어 : {item.kor}</td>
+                    <td>영어 : {item.eng}</td>
+                    <td>수학 : {item.math}</td>
+                    <td>평균 : {avg.toFixed(0)}</td>
+                    <td>총점 : {total}</td>
+                </tr>)
+            })}
+            </table>
+        )
+    }
+    ReactDOM.render(
+        <App/> ,
+        document.getElementById("root")
+    )
+</script>

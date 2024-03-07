@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>쿼리셀렉터 p태그</p>
+    <p>쿼리셀렉터 p태그</p>
+    <p>쿼리셀렉터 p태그</p>
+    
+    <button type="button" id="press1"> p태그 색상 부여하기 </button>
+</body>
+</html>
+<script>
+    window.onload = () =>{
+        document.querySelector("#press1").addEventListener("click", ()=>{
+            document.querySelector("p").style.color = "#ff5555"
+            document.querySelectorAll[0]("p").style.color = "#ff5555"
+
+            let p1 = document.querySelector(p);
+            console.log(p1);
+            let p2 = document.querySelectorAll(p);
+            console.log(p2); 
+
+            
+            let p3 = document.getElementsByTagName(p);
+            console.log(p2);
+        })
+    }
+</script>

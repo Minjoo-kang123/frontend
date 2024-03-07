@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <p>hello</p>
+        <input type="hidden" name="hello">
+        <input type="input" name="phone"><br/>
+        나이 <br/>
+        <input type="radio" name="age" id="" value="1">10대<br/>
+        <input type="radio" name="age" id="" value="2">20대<br/>
+        <input type="radio" name="age" id="" value="3">30대<br/>
+        <input type="radio" name="age" id="" value="4">40대<br/>
+        <input type="radio" name="age" id="" value="5">50대<br/>
+        <input type="radio" name="age" id="" value="6">60대<br/>
+
+        
+        사용가능 언어 <br/>
+        <input type="checkbox" name="language" id="" value="1">python<br/>
+        <input type="checkbox" name="language" id="" value="2">java<br/>
+        <input type="checkbox" name="language" id="" value="3">js<br/>
+        <input type="checkbox" name="language" id="" value="4">mssql<br/>
+        <input type="checkbox" name="language" id="" value="5">oracle<br/>
+        <input type="checkbox" name="language" id="" value="6">c++<br/>
+        최애는
+        <br/>
+        <select name="singer" id="">
+            <option value="">=선택하세요=</option>
+            <option value="1">남예준</option>
+            <option value="2">한노아</option>
+            <option value="3">채밤비</option>
+            <option value="4">도은호</option>
+            <option value="5">유하민</option>
+        </select>
+        <br/>
+        <textarea name="plave" id="" cols="30" rows="10"></textarea>
+        <button type="button" id="printbtn">출력</button>
+    </div>
+</body>
+</html>
+<script>
+    $(()=> {
+        let ab1 = $("input[type=hidden][name=hello]");
+        ab1.val("plave");
+        
+        $("input[type=hidden][name=hello]").val("yejun")
+        $("input[type=input][name=phone]").val("010-1234-12345");
+
+        //
+        $("input[type=radio][name=age]").eq(2).prop("checked", true);
+        $("input[type=checkbox][name=language]").eq(2).prop("checked", true);
+        $("input[type=checkbox][name=language]").eq(4).prop("checked", true);
+
+        
+        $("select[name=singer]").val('4');
+        $("textarea[name=plave]").val('이렇게 갑자기 컴백하기 잇니?');
+
+        $("#printbtn").click(()=>{
+            console.log($("input[type=hidden][name=hello]").val())
+            console.log($("input[type=input][name=phone]").val())
+
+            let age = $("input[type=radio][name=age]:checked").val()
+            console.log(age);
+
+            let language = $("input[type=checkbox][name=language]:checked")
+            let select = " "
+            language.each(function(){
+                select += $(this).val()+ ', '
+            });
+
+            console.log(select)
+        })
+
+    })
+</script>

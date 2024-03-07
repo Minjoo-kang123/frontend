@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1>SPA</h1><hr>
+    <div id = "root"></div>
+    <script type="text/babel">
+        function AppClass(){                   
+            const [arr, setArr] = React.useState(["사과", "귤", "오렌지"])
+            const [fruit, setFruit] = React.useState("")
+            const focusMove = React.useRef(null);
+
+            //배열 객체 참조변수와 그 변수의 값을 바꾸는 함수를 받아온다.
+            let change = (e)=>{
+                setFruit(e.target.value);
+            }
+            let append = ()=>{
+                //주소를 변경하는 것이기 때문에 깊은 복사를 통해
+                //배열을 새로 만들고 추가해 보내줘야한다.
+                //참조의 참조이기 때문에 인식을 하지 못한다.
+                setArr(arr.concat(fruit))
+                setFruit("")
+                focusMove.current.focus()
+                //useRef가 input 태그자체를 가져온다
+                window.document.querySelector
+            }
+            return(
+                <div>    
+                    과일 <input type="text" ref = {focusMove} name="" id="" onChange = {change} value={fruit}/>
+                    <button type="button" onClick={append}>추가</button>
+                    <ul>
+                        {   
+                            //리액트에서는 arr을 쓰지 못한다.
+                            arr.map((item, i)=>{
+                                return (<li key = {i}>{item}</li>)
+                            })
+                        }
+                    </ul>
+                </div>
+            )
+        }
+        ReactDOM.render(
+            <div>
+                <AppClass/>    
+            </div>
+        ,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

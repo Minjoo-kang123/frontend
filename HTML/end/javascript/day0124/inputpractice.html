@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        나이 : <input type="text" name="age" id="age">
+        <button type="button" onclick="goClick()">클릭</button>
+    </form>
+    
+</body>
+</html>
+<script>
+    //age라는 name과 id를 가지는 input객체는 
+    //window > wo
+    function goClick(){
+        var ageObj1 =document.getElementById(age);
+        var ageObj2 =document.getElementsByName(age);
+
+            alert(ageObj1);
+            alert(ageObj2);
+    }
+</script>

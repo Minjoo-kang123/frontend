@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="" onfocus="" onkeypress="keypress()" 
+    onkeydown="keydown()" onkeyup="keyup()"
+    onchange="change()">
+    <input type="number" name="" id="">
+
+</body>
+</html>
+<script>
+    function keydown(){
+        //event : 시스템이 제공하는 기본 객체 - 발생한 이벤트에 대한 정보가 온다.
+        console.log(event)
+        console.log("keydown")
+    }function change(){
+        console.log("chage")
+        //event : 시스템이 제공하는 기본 객체 - 발생한 이벤트에 대한 정보가 온다.
+        var s = document.getElementsByTagName("input")[0];
+        //tag name을 통해 접근하는 것이다.
+        s.value = s.value.toUpperCase();
+    }
+    function keyup(){
+        console.log("keyup")
+        var s = document.getElementsByTagName("input")[0];
+        //tag name을 통해 접근하는 것이다.
+        s.value = s.value.toUpperCase();
+    }
+    function keypress(){
+        console.log("keypress")
+    }
+    function onfocus(){
+        console.log("focus")
+    }
+</script>

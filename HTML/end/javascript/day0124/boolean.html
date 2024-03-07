@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>논리연산자이다</h2>
+    <h2>프롬프트</h2>
+</body>
+</html>
+<script>
+    let x = "10";
+
+    console.log(`${x} > 10 = ${x > 10}`);
+    console.log(`${x} < 10 = ${x < 10}`);
+    console.log(`${x} = 10 = ${x == 10}`);
+    // === 는 형전환 없이 판단하는 논리연산자이다.
+    console.log(`${x} = 10 = ${x === 10}`);
+
+    let a = prompt("정수 1", 5);
+    let b = prompt("정수 2", 5);
+
+    if(a != null && b != null){
+        alert(parseInt(a)+parseInt(b));
+    }else{
+        alter("취소취소")
+    }
+</script>
